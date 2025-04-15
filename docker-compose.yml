@@ -4,21 +4,21 @@ services:
     image: postgres:15.2
     restart: always
     environment:
-      - POSTGRES_USER=${POSTGRES_USER} # исправлено на POSTGRES_USER
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} # исправлено на POSTGRES_PASSWORD
-      - POSTGRES_DB=${POSTGRES_DB} # исправлено на POSTGRES_DB
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_HOST=${POSTGRES_HOST}
     ports:
       - 5433:5432
     volumes:
-      - postgres_data:/var/lib/postgresql/data # исправлено имя тома на postgres_data
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - backend
 
   redis:
     container_name: redis
     image: redis:5.0
-    restart: always # исправлено с image на always
+    restart: always
     ports:
       - 6379:6379
     command: redis-server --requirepass ${REDIS_PASSWORD}
@@ -28,7 +28,7 @@ services:
       - backend
 
 volumes:
-  postgres_data: # исправлено имя тома на postgres_data
+  postgres_data:
   redis_data:
 
 networks:
