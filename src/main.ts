@@ -16,6 +16,10 @@ async function bootstrap() {
   const config = app.get(ConfigService);
   const redis = new IORedis(config.getOrThrow('REDIS_URI'))
 
+  redis.on('error', (err) => {
+    console.error('Redis error:', err);
+  });
+
   app.use(cookieParser(config.getOrThrow<string>('COOKIES_SECRET')))
   app.useGlobalPipes(
     new ValidationPipe({

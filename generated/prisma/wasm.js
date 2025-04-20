@@ -138,6 +138,7 @@ exports.Prisma.AccountScalarFieldEnum = {
   refreshToken: 'refreshToken',
   accessToken: 'accessToken',
   expiresAt: 'expiresAt',
+  providerAccountId: 'providerAccountId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   userId: 'userId'
@@ -148,7 +149,8 @@ exports.Prisma.TokenScalarFieldEnum = {
   email: 'email',
   token: 'token',
   type: 'type',
-  expiresIn: 'expiresIn'
+  expiresIn: 'expiresIn',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
