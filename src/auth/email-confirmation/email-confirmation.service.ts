@@ -43,8 +43,6 @@ export class EmailConfirmationService {
 
         const existingUser = await this.userService.findByEmail(existingToken.email)
 
-        console.log("existingUser =>", existingUser)
-
         if (!existingUser) {
             throw new NotFoundException(
                 'Пользователь не найден.'
