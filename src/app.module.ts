@@ -3,11 +3,12 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { EmailConfirmationModule } from './auth/email-confirmation/email-confirmation.module';
 import { ProviderModule } from './auth/provider/provider.module';
+import { TwoFactorAuthModule } from './auth/two-factor-auth/two-factor-auth.module';
 import { IS_DEV_ENV } from './libs/common/utils/is-dev.util';
 import { MailModule } from './libs/mail/mail.module';
+import { PasswordRecoveryModule } from './password-recovery/password-recovery.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
-import { PasswordRecoveryModule } from './password-recovery/password-recovery.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { PasswordRecoveryModule } from './password-recovery/password-recovery.mo
     ProviderModule,
     MailModule,
     EmailConfirmationModule,
-    PasswordRecoveryModule
+    PasswordRecoveryModule,
+    TwoFactorAuthModule
   ],
 })
 export class AppModule {}
