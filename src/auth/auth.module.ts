@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getProvidersConfig } from 'src/config/providers.config';
+import { MailService } from 'src/libs/mail/mail.service';
 import { UserService } from 'src/user/user.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { EmailConfirmationModule } from './email-confirmation/email-confirmation.module';
 import { ProviderModule } from './provider/provider.module';
 
 @Module({
@@ -12,9 +14,12 @@ import { ProviderModule } from './provider/provider.module';
       imports: [ConfigModule], 
       useFactory: getProvidersConfig, 
       inject: [ConfigService]
-    })
+    }),
+    forwardRef(() => EmailConfirmationModule)
   ],
   controllers: [AuthController],
-  providers: [AuthService, UserService],
+  providers: [AuthService, UserService, MailService],
+  exports: [AuthService],
+
 })
 export class AuthModule {}
